@@ -54,8 +54,10 @@ app.post("/query", async (req,res)=> {
 
     const files = fs.readdirSync("./data")
     files.forEach(async file => {
+      console.log(file)
+      if (file.includes(".pdf")) {
         let fa = (fileToGenerativePart(`./data/${file}`, "application/pdf"))
-        allFiles.push(fa)
+        allFiles.push(fa) }
       });
     // const BNS = fileToGenerativePart("./BNS.txt", "text/plain");
 
