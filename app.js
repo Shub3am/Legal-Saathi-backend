@@ -20,7 +20,7 @@ app.post("/query", async (req,res)=> {
         };
       }
     let genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    // https://serpapi.com/search?q=&api_key=9c733ccee59d2fea9ac0020680d99be1c1c1c6d71c509ef0b38edf66b349964b
+    // https://serpapi.com/search?q=&api_key=09ef0b38edf66b349964b
 
 
 
