@@ -27,7 +27,7 @@ app.post("/query", async (req,res)=> {
     // const BNS = fileToGenerativePart("./BNS.txt", "text/plain");
       // console.log(allFiles)
 
-  const answer = await model.generateContent([`We have provided multiple pdf documents which is about the new Bhartiya Nyaya Sanhita (BNS) Act and THE BHARATIYA SAKSHYA BILL. The document is in English. You have to provide law consultation with the new documents and your knowledge and also compare the difference between old and new law system. \n\n Query: ${query}`, ...allFiles ]);
+  const answer = await model.generateContent([`We have provided multiple pdf documents which is about the new Bhartiya Nyaya Sanhita (BNS) Act and THE BHARATIYA SAKSHYA BILL. The document is in English. You have to provide law consultation with the new documents and your knowledge and also compare the difference between old and new law system. \n\n Query: ${query}`, ...embeds ]);
 
     if (!query) {
         res.json({error: "No query provided"})
