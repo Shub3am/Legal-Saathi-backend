@@ -19,7 +19,10 @@ app.post("/query", async (req,res)=> {
     let genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const {query} = req.body;
+    const {query} = await req.body;
+    if (!query) {
+      return res.json({error: "No query provided"})
+  }
     const allFiles = []
 
     const files = fs.readdirSync("./data")
@@ -30,11 +33,8 @@ app.post("/query", async (req,res)=> {
     // const BNS = fileToGenerativePart("./BNS.txt", "text/plain");
 
   const answer = await model.generateContent([`We have provided multiple pdf documents which has information about the new Bhartiya Nyaya Sanhita and THE BHARATIYA SAKSHYA BILL. The document is in English. You have to provide law consultation with the new documents and your knowledge and also compare the difference between old and new law system. \n\n Query: ${query}`, ...allFiles ]);
+  return res.json({answer: answer.response.text()})
 
-    if (!query) {
-        res.json({error: "No query provided"})
-    }
-    res.json({answer: answer.response.text()})
 })
 
 app.listen(process.env.PORT || 4000, async () => {
