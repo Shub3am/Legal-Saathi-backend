@@ -2,7 +2,7 @@ import express from "express";
 import 'dotenv/config'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs"
-import { cors } from "cors";
+import cors from "cors";
 const app = express();
 app.use(cors())
 app.use(express.json())
